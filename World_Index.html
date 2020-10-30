@@ -5,6 +5,8 @@
     <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
     <script src="colorbrewer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+       
     <style>
       path.countries {
         stroke-width: 1;
@@ -41,32 +43,65 @@
         stroke: #4F442B;
         stroke-width: 2px;
       }
+      div.tooltip {	
+        position: absolute;			
+        text-align: center;			
+        width: 60px;					
+        height: 28px;					
+        padding: 2px;				
+        font: 11px sans-serif;		
+        background: rgba(0,0,0,0.5);	
+        color:#FE9922;
+        padding: 10px;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        border-radius:10px;			
+      }
+    
     </style>
   </head>
   <body>
     <div id="viz">
-      <svg style="width:1000px;height:650px;" ></svg>
+      <svg style="width:1024px;height:550px;" ></svg>
     </div>
+    
     <script>
+
+      // Define the div for the tooltip
+      var div = d3.select("body").append("div")	
+          .attr("class", "tooltip")				
+          .style("opacity", 0);
+
+      
       var PromiseWrapper = (xhr, d) => new Promise(resolve => xhr(d, (p) => resolve(p)));
 
       Promise
         .all([
           PromiseWrapper(d3.json, "world.topojson"),
-          PromiseWrapper(d3.csv, "cities.csv")
+          PromiseWrapper(d3.csv, "factbook.csv")           
         ])
         .then(resolve => {
           createMap(resolve[0], resolve[1]);
         });
 
-      function createMap(topoCountries) {
+      function createMap(topoCountries, facts) {
+        //console.log(facts);
         var countries = 
           topojson.feature(topoCountries, topoCountries.objects.countries);
+        //console.log(countries)
+        
+        //map country names to IDs used on map
+        var arr=[];
+        facts.forEach(function(row){          
+          console.log(row.Country)
+        });     
+        
+          
 
-        var projection = d3.geoMollweide()
-          .scale(150)
-          .translate([550, 250])
-          .center([20,0]);
+        var projection = d3.geoMercator()
+          .scale(90)
+          .translate([400, 400])
+          .center([0,0]);
         
         var geoPath = d3.geoPath().projection(projection);
         var featureSize = 
@@ -76,16 +111,17 @@
         
         var graticule = d3.geoGraticule();
         
-        d3.select("svg").append("path")
+        /*d3.select("svg").append("path")
             .datum(graticule)
             .attr("class", "graticule line")
-            .attr("d", geoPath);
+            .attr("d", geoPath);*/
         
+
         d3.select("svg").append("path")
             .datum(graticule.outline)
             .attr("class", "graticule outline")
             .attr("d", geoPath);
-        
+
         d3.select("svg").selectAll("path.countries")
           .data(countries.features)
           .enter()
@@ -93,7 +129,9 @@
             .attr("d", geoPath)
             .attr("class", "countries")
             .style("fill", d => countryColor(geoPath.area(d)))
-            .style("stroke", "none");
+            .style("stroke", "none")
+            ;
+
 
         /*var neighbors =
           topojson.neighbors(topoCountries.objects.countries.geometries);*/
@@ -104,12 +142,23 @@
         
         function findNeighbors (d,i) {
           d3.select(this).style("fill", "#FE9922");
-          d3.selectAll("path.countries")
-            .filter((p,q) => neighbors[i].indexOf(q) > -1).style("fill", "#41A368");
+          d3.select(this).transition().duration('50').attr('opacity', '.85');
+              div.transition()
+                    .duration(50)
+                    .style("opacity", 1)
+                    .style('z-index', 1001);;
+                    
+              div.html("<b>"+ d.properties.name + "</b>")
+               .style("left", (d3.event.pageX + 10) + "px")
+               .style("top", (d3.event.pageY - 15) + "px");
+          
         }
         
         function clearNeighbors () {
           d3.selectAll("path.countries").style("fill", "#C4B9AC");
+          div.transition()
+               .duration('50')
+               .style("opacity", 0);
         }
       }
     </script>
