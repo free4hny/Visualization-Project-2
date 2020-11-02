@@ -148,9 +148,34 @@
                     .style("opacity", 1)
                     .style('z-index', 1001);;
                     
-              div.html("<b>"+ d.properties.name + "</b>")
+              //Get country name from topojson to match it with factbook
+              let CountryName =  d.properties.name;
+              //console.log(CountryName);
+              //console.log(d.properties.name);
+              let tempOnHover;
+
+              d3.csv("factbook.csv",function(data){
+                data.forEach(function(d) {
+                  //console.log(d)
+                  //console.log(d[0]);
+                  //console.log(d['Area(sq km)']);
+                  //console.log(d.Country);
+                  if (d.Country == CountryName) {
+                    tempOnHover = d;
+                    temparea = d['Area(sq km)']
+                    //console.log(tempOnHover);
+                    //console.log(temparea);                
+                    }
+                  })
+                return temparea;
+                //console.log(tempOnHover['Area(sq km)']);
+
+                
+              });
+
+              div.html("<b>"+ d.properties.name  + "</br>" + temparea + "</b>")
                .style("left", (d3.event.pageX + 10) + "px")
-               .style("top", (d3.event.pageY - 15) + "px");
+               .style("top", (d3.event.pageY - 15) + "px");             
           
         }
         
