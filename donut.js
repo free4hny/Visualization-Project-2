@@ -68,10 +68,10 @@ const data = [
   
   // with the margin convention include a group element translated within the svg canvas
   const margin = {
-    top: 20,
-    right: 20,
-    bottom: 20,
-    left: 20,
+    top: 10,
+    right: 10,
+    bottom: 10,
+    left: 10,
   };
   // compute the width and height of the actual viz from the viewBox dimensions and considering the margins
   // this to later work with width and height attributes directly through the width and height variables
