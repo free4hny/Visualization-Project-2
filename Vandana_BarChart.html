@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>  
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+  <style>
+    body {
+      margin: 10px;
+      overflow: hidden;      
+    }
+    svg {
+      border: blue 1px solid;
+    }
+    rect {
+      fill: steelblue;
+    }
+  </style>  
+</head>
+<body>
+  <svg width="980" height="600"></svg>
+  <script>
+    //References: 
+    //Bar Graphs: https://vizhub.com/GiovanniDw/8906ea7ce0e64503a3693343ad4ef0c0
+    //Data Sorting: http://bl.ocks.org/imstein/cea2fe0a71f99ba3a04d
+    (function (d3) {
+      'use strict';
+
+      const titleText = 'Bar Chart of Countries - GDP per Capita';
+      const xAxisLabelText = 'GDP per Capita';
+
+      const svg = d3.select('svg');
+
+      const width = +svg.attr('width');
+      const height = +svg.attr('height');
+
+      const render = data => {
+        const xValue = d => d['GDP - per capita'];
+        const yValue = d => d.Country;
+        const margin = { top: 50, right: 40, bottom: 50, left: 100 };
+        const innerWidth = width - margin.left - margin.right;
+        const innerHeight = height - margin.top - margin.bottom;
+        
+        const xScale = d3.scaleLinear()
+          .domain([0, d3.max(data, xValue)])
+          .range([0, innerWidth]);
+        
+        const yScale = d3.scaleBand()
+          .domain(data.map(yValue))
+          .range([0, innerHeight])
+          .padding(0.1);
+        
+        const g = svg.append('g')
+          .attr('transform', `translate(${margin.left},${margin.top})`);
+        
+        const xAxisTickFormat = number =>
+          d3.format('.3s')(number)
+            .replace('G', 'B');
+        
+        const xAxis = d3.axisBottom(xScale)
+          .tickFormat(xAxisTickFormat)
+          .tickSize(-innerHeight);
+        
+        g.append('g')
+          .call(d3.axisLeft(yScale))
+          .selectAll('.domain, .tick line')
+            .remove();
+        
+        const xAxisG = g.append('g').call(xAxis)
+          .attr('transform', `translate(0,${innerHeight})`);
+        
+        xAxisG.select('.domain').remove();
+        
+        xAxisG.append('text')
+            .attr('class', 'axis-label')
+            .attr('y', 30)
+            .attr('x', innerWidth / 2)
+            .attr('fill', 'black')
+            .text(xAxisLabelText);
+        
+        g.selectAll('rect').data(data)
+          .enter().append('rect')
+            .attr('y', d => yScale(yValue(d)))
+            .attr('width', d => xScale(xValue(d)))
+            .attr('height', yScale.bandwidth())
+            .on('mouseover', function (d, i) {
+                  d3.select(this).transition()
+                      .duration('50')
+                      .attr('opacity', '.85')})
+            .on('mouseout', function (d, i) {
+                  d3.select(this).transition()
+                      .duration('50')
+                      .attr('opacity', '1')})
+            
+        
+        g.append('text')
+            .attr('class', 'title')
+            .attr('y', -10)
+            .text(titleText);
+      };
+
+      d3.csv('factbook.csv').then(data => {
+        data.forEach(d => {
+          d['GDP - per capita'] = +d['GDP - per capita'];
+        });
+        var filteredData = data
+      	.filter(function(d) {return +d['GDP - per capita'] > 30000;})
+      	.sort(function(a,b) {return d3.descending(+a['GDP - per capita'], +b['GDP - per capita']);})
+        
+        render(filteredData);
+      });
+
+    }(d3));
+  </script>
+</body>
+
