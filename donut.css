@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@1&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@1&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@1&display=swap');
 *
 {
@@ -11,6 +13,8 @@ body
 min-height: 100vh;
 color: #434248;
 background: linear-gradient(to bottom, #859dfb, #ada7fd);
+/* font-family: 'Xanh Mono', monospace; */
+/* font-family: 'Xanh Mono', monospace; */
 font-family: 'Xanh Mono', monospace;
 }
 main
@@ -46,7 +50,7 @@ background: radial-gradient(10px 10px at 20px 50%, #ff5a53 50%,transparent 50%),
 nav h2
 {
     font-weight: 600;
-    letter-spacing: -0.05rem;
+    letter-spacing: 1.1rem;
     font-size: 0.9rem;
 }
 section

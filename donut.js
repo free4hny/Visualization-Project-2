@@ -70,8 +70,8 @@ const data = [
   const margin = {
     top: 10,
     right: 10,
-    bottom: 10,
-    left: 10,
+    bottom: 20,
+    left: 20,
   };
   // compute the width and height of the actual viz from the viewBox dimensions and considering the margins
   // this to later work with width and height attributes directly through the width and height variables
@@ -155,7 +155,7 @@ const data = [
     .attr('d', arc)
     .attr('fill', 'none')
     .attr('stroke', d => d.data.color)
-    .attr('stroke-width', strokeWidth * 0.8)
+    .attr('stroke-width', strokeWidth * 1.8)
     .attr('stroke-linecap', 'round')
     .attr('stroke-linejoin', 'round')
     // hide the segments by applying a stroke-dasharray/stroke-dashoffset equal to the circle circumference
