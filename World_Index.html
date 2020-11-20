@@ -57,19 +57,41 @@
         -moz-border-radius:10px;
         border-radius:10px;			
       }
+      #area1{
+        float:left;
+        background-color: rgb(243, 243, 250);
+        border-color: rgb(8, 8, 8);
+        border-width: 1;
+      }
+      
+      #area2{
+        float:right;
+      }
+      iframe{
+        border-color: rgb(8, 8, 8);
+        border-width: 1;
+      }
     
     </style>
   </head>
+  <div id="area1"></div>
+  
+  <div id="area2">
+    <iframe src ="Vandana_BarChart - Copy.html" width="525" height="370"></iframe>
+  </div>
   <body>
-    <div id="viz">
-      <svg style="width:1024px;height:550px;" ></svg>
-
     
-    </div>
-    
-    
+       
     <script>
-
+      var width = "700px"
+      var height = "600px"
+      
+      var chart1 = d3.select("#area1")
+          .append("svg")
+              .attr("width", width )
+              .attr("height", height )
+              
+      
       // Define the div for the tooltip
       var div = d3.select("body").append("div")	
           .attr("class", "tooltip")
@@ -97,14 +119,13 @@
         //map country names to IDs used on map
         var arr=[];
         facts.forEach(function(row){          
-          console.log(row.Country)
+          //console.log(row.Country)
         });     
         
-          
-
+        
         var projection = d3.geoMercator()
-          .scale(90)
-          .translate([400, 400])
+          .scale(100)
+          .translate([350, 350])
           .center([0,0]);
         
         var geoPath = d3.geoPath().projection(projection);
@@ -157,6 +178,7 @@
               //console.log(CountryName);
               //console.log(d.properties.name);
               let tempOnHover;
+              
 
               d3.csv("factbook.csv",function(data){
                 data.forEach(function(d) {
@@ -191,5 +213,6 @@
         }
       }
     </script>
+    
   </body>
 </html>
