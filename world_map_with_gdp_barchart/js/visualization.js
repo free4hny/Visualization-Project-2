@@ -47,7 +47,7 @@
   const tip = d3
     .tip()
     .attr("class", "d3-tip")
-    .offset([100, 50])
+    .offset([150, 50])
     .html(
       (d) =>
         `<strong>Country: </strong><span class='details'>${
@@ -57,6 +57,12 @@
         }: </strong><span class='details'>${parseFloat(d.value).toLocaleString()}</span>`
     );
 
+  //div and div1 are for the tooltip
+  var div = d3.select("body").append("div")	
+      .attr("class", "tooltip")				
+      .style("opacity", 0);
+
+  
   const projection = d3
     .geoMercator()
     .scale(110)
@@ -184,7 +190,7 @@
       }
       
       //*********SVG1 for BarChart - Vandana**********
-      const width1 = 350;
+      const width1 = 500;
       const height1 = 350;
       //d3.select('svg1').remove();
       const svg1 = d3
@@ -202,21 +208,22 @@
         //console.log(continent);
         //console.log(topic);
                 
-        const titleText = 'Bar Chart of Countries - GDP - per capita';// + topic;
-        const xAxisLabelText = 'GDP - per capita';//topic;
+        const titleText = 'Bar Chart of Countries -' + topic;//GDP - per capita';
+        const xAxisLabelText = topic;//'GDP - per capita';
         //console.log(titleText);
         //console.log(xAxisLabelText);        
         
         const render = data => {
           
-          const xValue = d => d['GDP - per capita'];//topic];
+          const xValue = d => d[topic];//'GDP - per capita'];
           const yValue = d => d.Country;
           const margin1 = { top: 50, right: 40, bottom: 50, left: 100 };
           const innerWidth = width1 - margin1.left - margin1.right;
           const innerHeight = height1 - margin1.top - margin1.bottom;
             
           const xScale = d3.scaleLinear()
-            .domain([0, 60000])//d3.max(data, xValue)])
+            //.domain([0, 60000])
+            .domain([0, d3.max(data, xValue)])
             .range([0, innerWidth ]);
             
           const yScale = d3.scaleBand()
@@ -256,7 +263,7 @@
           g.selectAll('rect').data(data)
             .enter().append('rect')
               .attr('y', d => yScale(yValue(d)))
-              .attr('width', d => xScale(xValue(d)))
+              .attr('width', d => xScale(xValue(d)/5))
               .attr('height', yScale.bandwidth()/2)             
 
           g.append('text')
@@ -284,7 +291,7 @@
                   .attr("d", path)                  
                   .style("fill", function(f){
                     if(f.properties.name === d["Country"]){
-                      //console.log(f.properties.name);
+                      //console.log(topic);
                       return "#fd8d3c";
                     }else{
                       return "grey";
@@ -293,6 +300,12 @@
                   .style("stroke", "white")
                   .style("opacity", 0.8)
                   .style("stroke-width", 1);
+                div.transition()
+	                	.duration(50)
+	    	            .style("opacity", .9);
+                div.html("<b>Country: </b>"+ d["Country"] +"<br/>"+"<b>"+topic+ ":</b>" +d[topic])
+                  .style("left", (d3.event.pageX) + "px")
+                  .style("top", (d3.event.pageY-28) + "px");
                   
           }
           function mouseoutbarchart (d,i) {
@@ -309,6 +322,10 @@
                   .append("path")
                   .attr("d", path)                  
                   .style("fill", "Grey");
+            div.transition()
+                  .duration(50)
+                  .style("opacity", 0);
+                         
             
           }
           
@@ -334,17 +351,19 @@
               //console.log(e);
               if(e['Country'] === d){
                 //console.log(d + '=' + e['Country']);               
-                countriesdata1.push(e);                                
+                countriesdata1.push(e);
+                //console.log(d3.max(e[topic]));                                
               }//end of if country === d              
             });// end of facts filter            
           }//end of if(d != null)          
         });//end of foreach
         //console.log(countriesdata1);
         var SortedData1 = countriesdata1      	
-        .sort(function(a,b) {return d3.descending(+a['GDP - per capita'], +b['GDP - per capita']);}).slice(0,10);//top 10 filtering
-        //.sort(function(a,b) {return d3.descending(+a[topic], +b[topic]);}).slice(0,10);//top 10 filtering
+        //.sort(function(a,b) {return d3.descending(+a['GDP - per capita'], +b['GDP - per capita']);}).slice(0,10);//top 10 filtering
+        .sort(function(a,b) {return d3.descending(+a[topic], +b[topic]);}).slice(0,10);//top 10 filtering
         
         render(SortedData1);
+        
                 
       }//end of barchart function
       d3.selectAll(".barchart").empty();

@@ -16,6 +16,20 @@
   pointer-events: none;
 }
 
+div.tooltip {	
+  z-index: 9999;
+  position: absolute;			
+  text-align: center;			
+  width: 150;					
+  height: 46px;					
+  padding: 2px;				
+  font: 12px sans-serif;		
+  background:#D8E6EB;	
+  border: 0px;		
+  border-radius: 8px;			
+  pointer-events: none;			
+}
+
 .details {
   color: white;
   pointer-events: none;
