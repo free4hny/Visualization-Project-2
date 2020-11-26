@@ -19,7 +19,8 @@
       colorRange: ["rgb(0, 30, 30)", "rgb(0, 255, 255)"],
     },
   ];
-  
+
+   
   let continent = "All",
     topic = "Population",
     maxValue,
@@ -65,8 +66,8 @@
   
   const projection = d3
     .geoMercator()
-    .scale(110)
-    .translate([width / 2.5, height / 1.5]);
+    .scale(100)
+    .translate([width / 2.3, height / 1.5]);
 
   const path = d3.geoPath().projection(projection);
 
@@ -106,7 +107,8 @@
       continent_selector.addEventListener("change", function (e) {
         continent = e.target.value;            
         updateWorldmap();        
-        barchart();        
+        barcharthigh();
+        barchartlow();        
       });
 
       topic_selector.addEventListener("change", function (e) {
@@ -119,7 +121,8 @@
           .range(defaultTopics.find((t) => t.topic === topic).colorRange);
         
         updateWorldmap();        
-        barchart();
+        barcharthigh();
+        barchartlow();
       });
 
       maxValue = Math.max(...facts.map((f) => f[topic]));
@@ -189,51 +192,55 @@
           ;
       }
       
-      //*********SVG1 for BarChart - Vandana**********
-      const width1 = 500;
-      const height1 = 350;
+      //*********SVG1 - BarChart for Top 10 Highest Countries - Vandana**********
+      const widthhigh = 500;
+      const heighthigh = 250;
       //d3.select('svg1').remove();
-      const svg1 = d3
-            .select(".barchart")      
+      const svghigh = d3
+            .select(".barcharthigh")      
             .append("svg")
-            .attr("width", width1)
-            .attr("height", height1)
-            .style("background", "lightgrey")
+            .attr("width", widthhigh)
+            .attr("height", heighthigh)
+            .style("background", "white")
             ;
-      barchart();
+      barcharthigh();
       //Barchart - Vandana
-      function barchart(){
-        svg1.select("g").remove();
+      function barcharthigh(){
+        svghigh.select("g").remove();
 
         //console.log(continent);
         //console.log(topic);
                 
-        const titleText = 'Bar Chart of Countries -' + topic;//GDP - per capita';
+        const titleText = 'Bar Chart of Top 10 Highest Countries -' + topic;//GDP - per capita';
         const xAxisLabelText = topic;//'GDP - per capita';
         //console.log(titleText);
         //console.log(xAxisLabelText);        
         
-        const render = data => {
+        const renderhigh = data => {
           
           const xValue = d => d[topic];//'GDP - per capita'];
           const yValue = d => d.Country;
-          const margin1 = { top: 50, right: 40, bottom: 50, left: 100 };
-          const innerWidth = width1 - margin1.left - margin1.right;
-          const innerHeight = height1 - margin1.top - margin1.bottom;
-            
+          //const xValue = d => d.Country;//'GDP - per capita'];
+          //const yValue = d => d[topic];
+          const marginhigh = { top: 50, right: 40, bottom: 50, left: 100 };
+          const innerWidthhigh = widthhigh - marginhigh.left - marginhigh.right;
+          const innerHeighthigh = heighthigh - marginhigh.top - marginhigh.bottom;
+          
+          maxValuehigh = Math.max(...data.map((f) => f[topic]));
+          //console.log(maxValuehigh);
           const xScale = d3.scaleLinear()
             //.domain([0, 60000])
-            .domain([0, d3.max(data, xValue)])
-            .range([0, innerWidth ]);
+            .domain([0, maxValuehigh])
+            .range([0, innerWidthhigh ]);
+          //console.log(xScale.domain());            
             
           const yScale = d3.scaleBand()
             .domain(data.map(yValue))
-            .range([0, innerHeight])
+            .range([0, innerHeighthigh])
             .padding(0.1);
             
-            
-          const g = svg1.append('g')
-            .attr('transform', `translate(${margin1.left},${margin1.top})`);
+          const g = svghigh.append('g')
+            .attr('transform', `translate(${marginhigh.left},${marginhigh.top})`);
             
           const xAxisTickFormat = number =>
             d3.format('.2s')(number)
@@ -241,7 +248,7 @@
             
           const xAxis = d3.axisBottom(xScale)
             .tickFormat(xAxisTickFormat)
-            .tickSize(-innerHeight);
+            .tickSize(-innerHeighthigh);
             
           g.append('g')
             .call(d3.axisLeft(yScale))
@@ -249,22 +256,22 @@
               .remove();
             
           const xAxisG = g.append('g').call(xAxis)
-            .attr('transform', `translate(0,${innerHeight})`);
+            .attr('transform', `translate(0,${innerHeighthigh})`);
             
           xAxisG.select('.domain').remove();
             
           xAxisG.append('text')
               .attr('class', 'axis-label')
               .attr('y', 30)
-              .attr('x', innerWidth / 2)
+              .attr('x', innerWidthhigh / 2)
               .attr('fill', 'black')
               .text(xAxisLabelText);
             
           g.selectAll('rect').data(data)
             .enter().append('rect')
               .attr('y', d => yScale(yValue(d)))
-              .attr('width', d => xScale(xValue(d)/5))
-              .attr('height', yScale.bandwidth()/2)             
+              .attr('width', d => xScale(xValue(d)))
+              .attr('height', yScale.bandwidth())             
 
           g.append('text')
               .attr('class', 'title')
@@ -272,16 +279,15 @@
               .text(titleText);
 
           g.selectAll('rect')
-                .on('mouseover',mouseoverbarchart)
-                .on('mouseout',mouseoutbarchart);
+                .on('mouseover',mouseoverbarcharthigh)
+                .on('mouseout',mouseoutbarcharthigh);
           
-          function mouseoverbarchart (d,i) {
+          function mouseoverbarcharthigh (d,i) {
             //console.log(d['Country']);
             d3.select(this).transition()
                   .duration('50')
                   .style("opacity", ".85")
-                  .style("stroke","darkblue")
-                  .style("stroke-width", 2);
+                  .style("fill","red");
             d3.select("svg")
                   .append("g")                  
                   .selectAll("path")
@@ -302,18 +308,18 @@
                   .style("stroke-width", 1);
                 div.transition()
 	                	.duration(50)
-	    	            .style("opacity", .9);
+	    	            .style("opacity", 1);
                 div.html("<b>Country: </b>"+ d["Country"] +"<br/>"+"<b>"+topic+ ":</b>" +d[topic])
                   .style("left", (d3.event.pageX) + "px")
                   .style("top", (d3.event.pageY-28) + "px");
                   
           }
-          function mouseoutbarchart (d,i) {
+          function mouseoutbarcharthigh (d,i) {
             //console.log(d['Country']);
             d3.select(this).transition()
                   .duration('50')
-                  .style("opacity", 0.5);
-                  //.style("fill","red");
+                  .style("opacity", 0.9)
+                  .style("fill","black");
             d3.select("svg")
                   .append("g")                  
                   .selectAll("path")
@@ -324,14 +330,13 @@
                   .style("fill", "Grey");
             div.transition()
                   .duration(50)
-                  .style("opacity", 0);
-                         
+                  .style("opacity", 0);                       
             
           }
           
         };
         //Get Countries of the selected continent - Vandana        
-        var CountriesofContinent = world.features.map(function(d){
+        var CountriesofContinenthigh = world.features.map(function(d){
           //console.log(d.properties.continent);
           if(continent === "All"){
             //console.log(d.properties.name);
@@ -341,32 +346,216 @@
             return d.properties.name;
           }
         });
-        //console.log(CountriesofContinent);
+        //console.log(CountriesofContinenthigh);
 
-        var countriesdata1 = [];
-        CountriesofContinent.forEach(function(d){
+        var countriesdatahigh = [];
+        CountriesofContinenthigh.forEach(function(d){
           if(d !== undefined){
             //console.log(d);
             facts.filter(function(e) {
               //console.log(e);
-              if(e['Country'] === d){
+              if(e['Country'] == d){
                 //console.log(d + '=' + e['Country']);               
-                countriesdata1.push(e);
+                countriesdatahigh.push(e);
                 //console.log(d3.max(e[topic]));                                
               }//end of if country === d              
             });// end of facts filter            
           }//end of if(d != null)          
         });//end of foreach
         //console.log(countriesdata1);
-        var SortedData1 = countriesdata1      	
+        var SortedDatahigh = [];
+        SortedDatahigh = countriesdatahigh      	
         //.sort(function(a,b) {return d3.descending(+a['GDP - per capita'], +b['GDP - per capita']);}).slice(0,10);//top 10 filtering
         .sort(function(a,b) {return d3.descending(+a[topic], +b[topic]);}).slice(0,10);//top 10 filtering
+        //console.log(SortedDatahigh.sort());
+        renderhigh(SortedDatahigh);       
+                
+      }//end of barchart function
+      d3.selectAll(".barcharthigh").empty();
+
+      /*SVG2 - BarChart for Top 10 Lowest Countries Vandana */
+      
+      const widthlow = 500;
+      const heightlow = 250;
+      //d3.select('svg1').remove();
+      const svglow = d3
+            .select(".barchartlow")      
+            .append("svg")
+            .attr("width", widthlow)
+            .attr("height", heightlow)
+            .style("background", "white")
+            ;
+      barchartlow();
+      //Barchart - Vandana
+      function barchartlow(){
+        svglow.select("g").remove();
+
+        //console.log(continent);
+        //console.log(topic);
+                
+        const titleText = 'Bar Chart of Top 10 Lowest Countries -' + topic;//GDP - per capita';
+        const xAxisLabelText = topic;//'GDP - per capita';
+        //console.log(titleText);
+        //console.log(xAxisLabelText);        
         
-        render(SortedData1);
+        const renderlow = data => {
+          
+          const xValue = d => d[topic];//'GDP - per capita'];
+          const yValue = d => d.Country;
+          //const xValue = d => d.Country;//'GDP - per capita'];
+          //const yValue = d => d[topic];
+          const marginlow = { top: 50, right: 40, bottom: 50, left: 100 };
+          const innerWidthlow = widthlow - marginlow.left - marginlow.right;
+          const innerHeightlow = heightlow - marginlow.top - marginlow.bottom;
+          
+          maxValuelow = Math.max(...data.map((f) => f[topic]));
+          //console.log(maxValuelow);
+          const xScale = d3.scaleLinear()
+            //.domain([0, 60000])
+            .domain([0, maxValuelow])
+            .range([0, innerWidthlow ]);
+          //console.log(xScale.domain());            
+            
+          const yScale = d3.scaleBand()
+            .domain(data.map(yValue))
+            .range([0, innerHeightlow])
+            .padding(0.1);           
+            
+          const g = svglow.append('g')
+            .attr('transform', `translate(${marginlow.left},${marginlow.top})`);
+            
+          const xAxisTickFormat = number =>
+            d3.format('.2s')(number)
+              .replace('G', 'B');
+            
+          const xAxis = d3.axisBottom(xScale)
+            .tickFormat(xAxisTickFormat)
+            .tickSize(-innerHeightlow);
+            
+          g.append('g')
+            .call(d3.axisLeft(yScale))
+            .selectAll('.domain, .tick line')
+              .remove();
+            
+          const xAxisG = g.append('g').call(xAxis)
+            .attr('transform', `translate(0,${innerHeightlow})`);
+            
+          xAxisG.select('.domain').remove();
+            
+          xAxisG.append('text')
+              .attr('class', 'axis-label')
+              .attr('y', 30)
+              .attr('x', innerWidthlow / 2)
+              .attr('fill', 'black')
+              .text(xAxisLabelText);
+            
+          g.selectAll('rect').data(data)
+            .enter().append('rect')
+              .attr('y', d => yScale(yValue(d)))
+              .attr('width', d => xScale(xValue(d)))
+              .attr('height', yScale.bandwidth())             
+
+          g.append('text')
+              .attr('class', 'title')
+              .attr('y', -10)
+              .text(titleText);
+
+          g.selectAll('rect')
+                .on('mouseover',mouseoverbarchartlow)
+                .on('mouseout',mouseoutbarchartlow);
+          
+          function mouseoverbarchartlow (d,i) {
+            //console.log(d['Country']);
+            d3.select(this).transition()
+                  .duration('50')
+                  .style("opacity", ".8")                  
+                  .style("fill", "Red");
+            d3.select("svg")
+                  .append("g")                  
+                  .selectAll("path")
+                  .data(world.features)
+                  .enter()
+                  .append("path")
+                  .attr("d", path)                  
+                  .style("fill", function(f){
+                    if(f.properties.name === d["Country"]){
+                      console.log(topic);
+                      return "#fd8d3c";
+                    }else{
+                      return "grey";
+                    }                 
+                  })
+                  .style("stroke", "white")
+                  .style("opacity", 0.8)
+                  .style("stroke-width", 1);
+                div.transition()
+	                	.duration(50)
+	    	            .style("opacity", .9);
+                div.html("<b>Country: </b>"+ d["Country"] +"<br/>"+"<b>"+topic+ ":</b>" +d[topic])
+                  .style("left", (d3.event.pageX) + "px")
+                  .style("top", (d3.event.pageY-28) + "px");
+                  
+          }
+          function mouseoutbarchartlow (d,i) {
+            //console.log(d['Country']);
+            d3.select(this).transition()
+                  .duration('50')
+                  .style("opacity", 0.9)
+                  .style("fill","black");
+            d3.select("svg")
+                  .append("g")                  
+                  .selectAll("path")
+                  .data(world.features)
+                  .enter()
+                  .append("path")
+                  .attr("d", path)                  
+                  .style("fill", "Grey");
+            div.transition()
+                  .duration(50)
+                  .style("opacity", 0);                     
+            
+          }
+          
+        };
+        //Get Countries of the selected continent - Vandana        
+        var CountriesofContinentlow = world.features.map(function(d){
+          //console.log(d.properties.continent);
+          if(continent === "All"){
+            //console.log(d.properties.name);
+            return d.properties.name;            
+          }else if(continent === d.properties.continent){
+            //console.log(d.properties.name)
+            return d.properties.name;
+          }
+        });
+        //console.log(CountriesofContinentlow);
+
+        var countriesdatalow = [];
+        CountriesofContinentlow.forEach(function(d){
+          if(d !== undefined){
+            //console.log(d);
+            facts.filter(function(e) {
+              //console.log(e);
+              if(e['Country'] == d){
+                //console.log(d + '=' + e['Country']);               
+                countriesdatalow.push(e);
+                //console.log(d3.max(e[topic]));                                
+              }//end of if country === d              
+            });// end of facts filter            
+          }//end of if(d != null)          
+        });//end of foreach
+        //console.log(countriesdata1);
+        var SortedDatalow = [];
+        SortedDatalow = countriesdatalow      	
+        //.sort(function(a,b) {return d3.descending(+a['GDP - per capita'], +b['GDP - per capita']);}).slice(0,10);//top 10 filtering
+        .sort(function(a,b) {return d3.ascending(+a[topic], +b[topic]);}).slice(0,10);//top 10 filtering
+        //console.log(SortedDatalow.sort());
+        renderlow(SortedDatalow);
         
                 
       }//end of barchart function
-      d3.selectAll(".barchart").empty();
+      d3.selectAll(".barchartlow").empty();
+      
     });//end of d3 csv
   });//end of d3 json
 })();
