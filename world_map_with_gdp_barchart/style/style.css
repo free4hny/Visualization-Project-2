@@ -46,22 +46,25 @@ div.tooltip {
 
 .selectors {
   position: absolute;
-  right: 4px;
-  top: 4px;
-  padding: 24px;
+  right: 1px;
+  top: 1px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
 }
+label{
+  font-size: 14px;
+}
 select {
-  min-width: 240px;
-  height: 32px;
+  width: 100px;
+  height: 24px;
 }
 body {
   margin: 10px;
         
 }
 .barchart{
-  border: blue 1px solid;
+  border-left: blue 1px solid;
 }
 rect {
   fill: steelblue;
@@ -69,7 +72,7 @@ rect {
 Button{
   border: none;
   color: white;
-  padding: 8px 8px;
+  padding: 2px 2px;
   text-align: center;
   text-decoration: none;    
   font-size: 12px;
