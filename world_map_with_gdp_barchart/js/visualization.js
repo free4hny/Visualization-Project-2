@@ -211,7 +211,7 @@
         //console.log(continent);
         //console.log(topic);
                 
-        const titleText = 'Bar Chart of Top 10 Highest Countries -' + topic;//GDP - per capita';
+        const titleText = 'Bar Chart of Top 10 Countries - ' + topic;//GDP - per capita';
         const xAxisLabelText = topic;//'GDP - per capita';
         //console.log(titleText);
         //console.log(xAxisLabelText);        
@@ -393,7 +393,7 @@
         //console.log(continent);
         //console.log(topic);
                 
-        const titleText = 'Bar Chart of Top 10 Lowest Countries -' + topic;//GDP - per capita';
+        const titleText = 'Bar Chart of Bottom 10 Countries - ' + topic;//GDP - per capita';
         const xAxisLabelText = topic;//'GDP - per capita';
         //console.log(titleText);
         //console.log(xAxisLabelText);        
