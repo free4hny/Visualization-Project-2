@@ -24,7 +24,8 @@ div.tooltip {
   height: 46px;					
   padding: 2px;				
   font: 12px sans-serif;		
-  background:#D8E6EB;	
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffa500;	
   border: 0px;		
   border-radius: 8px;			
   pointer-events: none;			
@@ -36,12 +37,15 @@ div.tooltip {
 }
 
 .top-container {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
+  
+  
 }
 
 .world-map {
   position: relative;
+  border-right: black 1px solid;
 }
 
 .selectors {
@@ -51,6 +55,7 @@ div.tooltip {
   padding: 12px;
   display: flex;
   flex-direction: column;
+  
 }
 label{
   font-size: 14px;
@@ -63,12 +68,13 @@ body {
   margin: 10px;
         
 }
-.barchart{
-  border-left: blue 1px solid;
-}
+
 rect {
-  fill: steelblue;
+  fill: black;
+  opacity: 0.9;
+  
 }
+
 Button{
   border: none;
   color: white;
