@@ -16,6 +16,53 @@
   pointer-events: none;
 }
 
+
+.details {
+  color: white;
+  pointer-events: none;
+}
+
+.top-container {
+  display: inline-flex;
+  justify-content: center;  
+  
+}
+
+.world-map {
+  position: relative;
+  /*border-right: black 1px solid;*/
+}
+
+.selectors {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+select {
+  width: 100px;
+  height: 24px;
+}
+
+/* Vandana CSS*/
+body {
+  margin: 10px;
+        
+}
+label{
+  font-size: 15px;
+}
+
+rect {
+  fill: black;
+  opacity: 0.8;
+  
+}
+
 div.tooltip {	
   z-index: 9999;
   position: absolute;			
@@ -29,50 +76,6 @@ div.tooltip {
   border: 0px;		
   border-radius: 8px;			
   pointer-events: none;			
-}
-
-.details {
-  color: white;
-  pointer-events: none;
-}
-
-.top-container {
-  display: inline-flex;
-  justify-content: center;
-  
-  
-}
-
-.world-map {
-  position: relative;
-  border-right: black 1px solid;
-}
-
-.selectors {
-  position: absolute;
-  right: 1px;
-  top: 1px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  
-}
-label{
-  font-size: 14px;
-}
-select {
-  width: 100px;
-  height: 24px;
-}
-body {
-  margin: 10px;
-        
-}
-
-rect {
-  fill: black;
-  opacity: 0.9;
-  
 }
 
 Button{
