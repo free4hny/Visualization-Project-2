@@ -16,37 +16,85 @@
   pointer-events: none;
 }
 
+
 .details {
   color: white;
   pointer-events: none;
 }
 
 .top-container {
-  display: flex;
+  display: inline-flex;
+  justify-content: center;  
+  
 }
 
 .world-map {
   position: relative;
+  /*border-right: black 1px solid;*/
 }
 
 .selectors {
   position: absolute;
-  right: 4px;
-  top: 4px;
-  padding: 0.1px;
+  right: 1px;
+  top: 1px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
+  
 }
+
 select {
-  min-width: 200px;
-  height: 32px;
+  width: 100px;
+  height: 24px;
 }
 
-.tooltip {
-    position: absolute;
+/* Vandana CSS*/
+body {
+  margin: 10px;
+        
+}
+label{
+  font-size: 15px;
 }
 
-.mappings-dropdown {
-    text-align: right;
-    margin-right: 100px;
+rect {
+  fill: black;
+  opacity: 0.8;
+  
+}
+
+div.tooltip {	
+  z-index: 9999;
+  position: absolute;			
+  text-align: center;			
+  width: 150;					
+  height: 46px;					
+  padding: 2px;				
+  font: 12px sans-serif;		
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffa500;	
+  border: 0px;		
+  border-radius: 8px;			
+  pointer-events: none;			
+}
+
+Button{
+  border: none;
+  color: white;
+  padding: 2px 2px;
+  text-align: center;
+  text-decoration: none;    
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;cursor: pointer;
+  float: right;
+  font-weight: bold;
+}
+
+Button:hover {
+  background-color: #4CAF50;
+  color: white;
 }

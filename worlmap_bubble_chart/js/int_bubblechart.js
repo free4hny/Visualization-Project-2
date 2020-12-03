@@ -373,8 +373,8 @@
         .style("opacity", 0.3)
         .attr("class", "tooltip")
         .style("background-color", "darkgray")
-        .style("border-radius", "5px")
-        .style("padding", "10px")
+        .style("border-radius", "8px")
+        .style("padding", "20px")
         .style("color", "black")
     bubble_chart();
 
@@ -385,7 +385,7 @@
         console.log(continent);
         console.log(topic);
 
-        const titleText = 'Bubble Chart of Top 10 Countries - ' + topic;//GDP - per capita';
+        const titleText = 'Bubble Chart across Countries - ' + topic;//GDP - per capita';
         const xAxisLabelText = topic;
 
         // set the dimensions and margins of the graph
@@ -441,7 +441,7 @@
 
         var SortedDatabubble = [];
         SortedDatabubble = countriesdatabubble
-        .sort(function(a,b) {return d3.descending(+a[topic], +b[topic]);}).slice(0,15);//top 10 filtering
+        .sort(function(a,b) {return d3.descending(+a[topic], +b[topic]);});//.slice(0,15);//top 10 filtering
 
         const xValue = d => d[topic];
         const yValue = d => d[yAxisParam];
@@ -457,9 +457,12 @@
             d3.min(facts, function(d) { return parseFloat(d[yAxisParam])}),
             d3.max(facts, function(d) { return parseFloat(d[yAxisParam])})
         ]
+
+        console.log(yDomain)
+
         var x = d3.scaleLinear()
           .domain(xDomain)
-          .range([ 0, width ]);
+          .range([ 0, width]);
         svg.append("g")
           .attr("transform", "translate(0," + height + ")")
           .call(d3.axisBottom(x).ticks(3).tickFormat(tickFormat));
@@ -475,7 +478,7 @@
         // Add Y axis
         var y = d3.scaleLinear()
           .domain(yDomain)
-          .range([ height, 0]);
+          .range([height, 0]);
         svg.append("g")
           .call(d3.axisLeft(y).tickFormat(tickFormat));
 
@@ -504,18 +507,18 @@
             .duration(200)
           var tooltipText = 'Country: ' + d['Country'] + '<br>';
           tooltipText += topic + ': ' + d[topic] + '<br>';
-          tooltipText += yAxisParam + ': ' + d[yAxisParam] + '<br>';
+          tooltipText += yAxisParam + ': ' + d[yAxisParam] + '<br>' + '<br>';
 
           tooltip
             .style("opacity", 1)
             .html(tooltipText)
-            .style("left", (d3.event.pageX + 30) + "px")
-            .style("top", (d3.event.pageY + 30) + "px")
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY + 10) + "px")
         }
         var moveTooltip = function(d) {
           tooltip
-            .style("left", (d3.event.pageX + 30) + "px")
-            .style("top", (d3.event.pageY + 30) + "px")
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY + 10) + "px")
         }
         var hideTooltip = function(d) {
           noHighlight(d);
