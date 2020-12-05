@@ -92,16 +92,16 @@
   let topicColor = defaultTopics.find((t) => t.topic === topic).colorFn;
   let topicDensity = defaultTopics.find((t) => t.topic === topic).densities;
   const densityLineWidth = 500;
-  const margin = { top: 0, right: 0, bottom: 40, left: 0 };
-  const width = 750 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const margin = { top: 0, right: 0, bottom: 0, left: 0 };
+  const width = 830 - margin.left - margin.right;
+  const height = 405 - margin.top - margin.bottom;
 
   const svg = d3
     .select(".world-map")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
-    .style("background", "grey")
+    .style("background", "#666666")
     .append("g")
     .attr("class", "map");
 
@@ -128,7 +128,7 @@
 
   const projection = d3
     .geoMercator()
-    .scale(100)
+    .scale(80)
     .translate([width / 2.2, height / 1.5]);
 
   const path = d3.geoPath().projection(projection);
@@ -214,10 +214,10 @@
           .append("text")
           .style("font-size",17)
           .style("font-weight", "bold")
-          .style("fill", "black")
+          .style("fill", "white")
           .attr("x", 20)
           .attr("y", 20)
-          .text(topic + ' (2005)');
+          .text(topic);
         const densityG = svg
           .append("g")
           .attr("class", "density-line")
@@ -247,8 +247,9 @@
           .attr("x", (_, i) => i * rectWidth)
           .attr("y", 20)
           .attr("width", rectWidth)
-          .attr("height", 15)
+          .attr("height", 16)
           .style("fill", (_, i) => topicColor(topicColor.domain()[i]))
+          .style("opacity", 1)
           .on("mouseover", function (d, i) {
             const ranges = [topicColor.domain()[i], topicColor.domain()[i + 1]];
             countryMap.selectAll(".country").each(function (d) {
@@ -357,15 +358,15 @@
       }
 
       //*********SVG1 - BarChart for Top 10 Highest Countries - Vandana**********
-      const widthhigh = 500;
-      const heighthigh = 250;
+      const widthhigh = 585;
+      const heighthigh = 200;
       //d3.select('svg1').remove();
       const svghigh = d3
             .select(".barcharthigh")      
             .append("svg")
             .attr("width", widthhigh)
             .attr("height", heighthigh)
-            .style("background", "white")
+            .style("background", "#666666")
             ;
       barcharthigh();
       //Barchart - Vandana
@@ -428,7 +429,7 @@
               .attr('class', 'axis-label')
               .attr('y', 30)
               .attr('x', innerWidthhigh / 2)
-              .attr('fill', 'black')
+              .attr('fill', 'white')
               .text(xAxisLabelText);
             
           
@@ -449,7 +450,8 @@
           g.append('text')
               .attr('class', 'title')
               .attr('y', -10)
-              .text(titleText);
+              .text(titleText)
+              .attr('fill', 'white');
 
           g.selectAll('rect')
                 .on('mouseover',mouseoverbarcharthigh)
@@ -493,8 +495,8 @@
             
             d3.select(this).transition()
                   .duration('50')
-                  .style("opacity", 0.9)
-                  .style("fill","black")
+                  .style("opacity",1)
+                  .style("fill","grey")
                   .attr('height', yScale.bandwidth()/1.5);
             d3.select("svg")
                   .append("g")                  
@@ -551,15 +553,15 @@
 
       /*SVG2 - BarChart for Top 10 Lowest Countries Vandana */
       
-      const widthlow = 500;
-      const heightlow = 250;
+      const widthlow = 585;
+      const heightlow = 200;
       //d3.select('svg1').remove();
       const svglow = d3
             .select(".barchartlow")      
             .append("svg")
             .attr("width", widthlow)
             .attr("height", heightlow)
-            .style("background", "white")
+            .style("background", "#666666")
             ;
       barchartlow();
       //Barchart - Vandana
@@ -622,7 +624,7 @@
               .attr('class', 'axis-label')
               .attr('y', 30)
               .attr('x', innerWidthlow / 2)
-              .attr('fill', 'black')
+              .attr('fill', 'white')
               .text(xAxisLabelText)
               ;
             
@@ -642,7 +644,8 @@
           g.append('text')
               .attr('class', 'title')
               .attr('y', -10)
-              .text(titleText);
+              .text(titleText)
+              .attr('fill','white');
 
           g.selectAll('rect')
                 .on('mouseover',mouseoverbarchartlow)
@@ -745,8 +748,8 @@
 
       ///Bubble Chart Implementation////
 
-      const width_bubble = 600;
-      const height_bubble = 420;
+      const width_bubble = 500;
+      const height_bubble = 300;
 
       //d3.select('svg1').remove();
       const svg_bubble = d3
@@ -754,7 +757,7 @@
             .append("svg")
             .attr("width", width_bubble)
             .attr("height", height_bubble)
-            .style("background", "white")
+            .style("background", "#666666")
             ;
 
     // -1- Create a tooltip div that is hidden by default:
@@ -780,8 +783,8 @@
 
         // set the dimensions and margins of the graph
         var margin = {top: 40, right: 150, bottom: 60, left: 80},
-            width = 600 - margin.left - margin.right,
-            height = 420 - margin.top - margin.bottom;
+            width = 800 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
         var svg = d3.select("#bubble-chart-container")

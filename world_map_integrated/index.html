@@ -13,10 +13,18 @@
   </head>
 
   <!-- Main page content -->
-  <body>    
+  <body> 
+    <div class="hbar">
+    <h1> World Factbook - 2005
+      <form style="float:right">
+      <button type="submit" formaction=" ##### "> Document</button>
+      <button type="submit" formaction=" ######"> Demonstration Video </button>
+      </form>
+    </h1>
+    </div>   
     <div class="top-container">      
       <div class="world-map">
-        <div class="selectors">
+        <div class="selectors" style="color:white">
           <button onClick="window.location.reload()" class="ResetButton">Reset</button>
           <label>Continents</label>
           <select id="continent-selector" class="continent-selector"></select>
@@ -24,12 +32,15 @@
           <select id="topic-selector" class="topic-selector"></select>          
         </div>
         
+      
       </div>
+      <div class="vl"></div>
       <div class="barchartlow"> 
-        <div class="barcharthigh"> </div></div> 
+        <div class="barcharthigh"> </div>
+      </div> 
     </div>
 
-    <div class="bubblechart">
+    <div class="bubblechart" style="background-color:#6666">
           <div class="mappings-dropdown">
               <label>Y Axis</label>
               <select id="mapping-selector" class="mapping-selector"></select>
@@ -67,7 +78,7 @@
         ]);
 
       // Optional; add a title and set the width and height of the chart
-      var options = {'title':'Debt by Countries', 'width':500, 'height':400};
+      var options = {'title':'Debt by Countries', 'width':580, 'height':300};
 
       // Display the chart inside the <div> element with id="piechart"
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
