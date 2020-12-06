@@ -1,9 +1,10 @@
 body {
 
+
 background-color:white;
+margin: 10px;
 
 }
-
 
 .hbar {
   color :black;
@@ -26,8 +27,6 @@ background-color:white;
     width: auto;
     height: 15px;
 }
-
-
 
 .names {
   fill: none;
@@ -80,24 +79,20 @@ select {
 }
 
 /* Vandana CSS*/
-body {
-  margin: 10px;
-        
-}
 label{
   font-size: 15px;
 }
 
-rect {
+.barrect {
   fill: black;
-  opacity: 0.5;
+  opacity: 0.85;
   
 }
-
-/* #piechart {
-  fill:white;
-  opacity: 0.8;
-} */
+rect {
+  fill:#333333;
+  background-color: #333333; 
+  
+}
 
 div.tooltip {	
   z-index: 9999;
@@ -114,10 +109,8 @@ div.tooltip {
   pointer-events: none;			
 }
 
-Button{
-  border: none;
-  color: white;
-  padding: 2px 2px;
+.ResetButton{  
+  padding: 3px 3px;
   text-align: center;
   text-decoration: none;    
   font-size: 12px;
@@ -125,15 +118,54 @@ Button{
   transition-duration: 0.4s;
   background-color: white;
   color: black;
-  border: 2px solid #4CAF50;cursor: pointer;
+  border: 2px solid #4CAF50;
+  cursor: pointer;
   float: right;
   font-weight: bold;
 }
 
-Button:hover {
+.ResetButton:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.IndexButton{ 
+  
+  padding: 5px 5px;
+  text-align: center;     
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #cddf30;
+  cursor: pointer;  
+  font-weight: bold;
+}
+.IndexButton:hover {
+  background-color: #cddf30;
+  color: white;
+}
+
+button{
+  padding: 5px 5px;
+  text-align: center;     
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  cursor: pointer;  
+  font-weight: bold;
+  
+}
+
+button:hover {
   background-color: #4CAF50;
   color:black;
 }
+
 
 /*#bubble-chart-container {
     position: relative;
@@ -155,9 +187,10 @@ Button:hover {
   position: relative;
   top: -325px;
   left: 835px;
+
 }
 
 .vl {
   border-left: 6px solid #484646;
-  height: 405px;
+  height: 410px;
 }

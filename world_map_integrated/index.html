@@ -9,18 +9,18 @@
     <title>World Map</title>
 
     <!-- CSS Styling -->
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="./style/style.css" />
   </head>
 
   <!-- Main page content -->
   <body> 
     <div class="hbar">
-    <h1> World Factbook - 2005
-      <form style="float:right">
-      <button type="submit" formaction=" ##### "> Document</button>
-      <button type="submit" formaction=" ######"> Demonstration Video </button>
-      </form>
-    </h1>
+      <h1> World Factbook - 2005
+        <form style="float:right">
+          <button type="submit" formaction="about.html">Design Document</button>
+          <button type="submit" formaction="demo.html"> Demonstration Video </button>
+        </form>
+      </h1>
     </div>   
     <div class="top-container">      
       <div class="world-map">
@@ -30,28 +30,24 @@
           <select id="continent-selector" class="continent-selector"></select>
           <label>Topics</label>
           <select id="topic-selector" class="topic-selector"></select>          
-        </div>
-        
-      
+        </div>     
       </div>
       <div class="vl"></div>
-      <div class="barchartlow"> 
-        <div class="barcharthigh"> </div>
-      </div> 
-    </div>
+        <div class="barchartlow"> 
+          <div class="barcharthigh"> </div>
+        </div> 
+      </div>
+
 
     <div class="bubblechart" style="background-color:white">
           <div class="mappings-dropdown">
               <label>Y Axis</label>
               <select id="mapping-selector" class="mapping-selector"></select>
-          </div>
-             <div id="bubble-chart-container">
-          </div>
         </div>
-      </div>
-
-
-   <!-- <h2>Showing top 7 countries under External debt</h2> -->
+      <div id="bubble-chart-container"></div>
+    </div>
+    
+    <!-- <h2>Showing top 7 countries under External debt</h2> -->
     <!--<h3>Top 7 Countries and Total Debt as <b>"9988700000000 M" </b></h3> -->
 
     <div id="piechart"></div>
@@ -92,7 +88,7 @@
     <script src="https://d3js.org/topojson.v1.min.js"></script>
     <script src="https://d3js.org/queue.v1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
-    <script src="js/visualization.js"></script>
+    <script src="./js/visualization.js"></script>
    <!-- <script src="js/int_bubblechart.js"></script> -->
 
   </body>
