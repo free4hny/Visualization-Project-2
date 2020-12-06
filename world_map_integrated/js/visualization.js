@@ -101,7 +101,7 @@
     .append("svg")
     .attr("width", width)
     .attr("height", height)
-    .style("background", "#666666")
+    .style("background", "white")
     .append("g")
     .attr("class", "map");
 
@@ -214,7 +214,7 @@
           .append("text")
           .style("font-size",17)
           .style("font-weight", "bold")
-          .style("fill", "white")
+          .style("fill", "black")
           .attr("x", 20)
           .attr("y", 20)
           .text(topic);
@@ -366,7 +366,7 @@
             .append("svg")
             .attr("width", widthhigh)
             .attr("height", heighthigh)
-            .style("background", "#666666")
+            .style("background", "white")
             ;
       barcharthigh();
       //Barchart - Vandana
@@ -429,7 +429,7 @@
               .attr('class', 'axis-label')
               .attr('y', 30)
               .attr('x', innerWidthhigh / 2)
-              .attr('fill', 'white')
+              .attr('fill', 'black')
               .text(xAxisLabelText);
             
           
@@ -451,7 +451,7 @@
               .attr('class', 'title')
               .attr('y', -10)
               .text(titleText)
-              .attr('fill', 'white');
+              .attr('fill', 'black');
 
           g.selectAll('rect')
                 .on('mouseover',mouseoverbarcharthigh)
@@ -561,7 +561,7 @@
             .append("svg")
             .attr("width", widthlow)
             .attr("height", heightlow)
-            .style("background", "#666666")
+            .style("background", "white")
             ;
       barchartlow();
       //Barchart - Vandana
@@ -624,7 +624,7 @@
               .attr('class', 'axis-label')
               .attr('y', 30)
               .attr('x', innerWidthlow / 2)
-              .attr('fill', 'white')
+              .attr('fill', 'black')
               .text(xAxisLabelText)
               ;
             
@@ -645,7 +645,7 @@
               .attr('class', 'title')
               .attr('y', -10)
               .text(titleText)
-              .attr('fill','white');
+              .attr('fill','black');
 
           g.selectAll('rect')
                 .on('mouseover',mouseoverbarchartlow)
@@ -757,7 +757,7 @@
             .append("svg")
             .attr("width", width_bubble)
             .attr("height", height_bubble)
-            .style("background", "#666666")
+            .style("background", "white")
             ;
 
     // -1- Create a tooltip div that is hidden by default:

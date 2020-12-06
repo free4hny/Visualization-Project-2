@@ -1,6 +1,6 @@
 body {
 
-background-color:#333333;
+background-color:white;
 
 }
 
@@ -132,7 +132,7 @@ Button{
 
 Button:hover {
   background-color: #4CAF50;
-  color: white;
+  color:black;
 }
 
 /*#bubble-chart-container {
@@ -155,7 +155,6 @@ Button:hover {
   position: relative;
   top: -325px;
   left: 835px;
-  background:"#666666"; 
 }
 
 .vl {
