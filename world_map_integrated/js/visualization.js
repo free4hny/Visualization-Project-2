@@ -93,7 +93,7 @@
   let topicDensity = defaultTopics.find((t) => t.topic === topic).densities;
   const densityLineWidth = 500;
   const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-  const width = 830 - margin.left - margin.right;
+  const width = 800 - margin.left - margin.right;
   const height = 405 - margin.top - margin.bottom;
 
   const svg = d3
@@ -135,8 +135,8 @@
   let countriesIncContinent = {};
 
   svg.call(tip);
-  d3.json("../data/world.json").then((world, err) => {
-    d3.csv("../data/factbook.csv").then((facts, err) => {
+  d3.json("./data/world.json").then((world, err) => {
+    d3.csv("./data/factbook.csv").then((facts, err) => {
       // const topics = Object.keys(facts[0]);
       //console.log(continent + topic);
       setYAxisLabelDropdown();
@@ -358,7 +358,7 @@
       }
 
       //*********SVG1 - BarChart for Top 10 Highest Countries - Vandana**********
-      const widthhigh = 585;
+      const widthhigh = 520;
       const heighthigh = 200;
       //d3.select('svg1').remove();
       const svghigh = d3
@@ -435,6 +435,7 @@
           
           g.selectAll('rect').data(data)
               .enter().append('rect')
+                .attr('class', 'barrect')
                 .attr('y', d => yScale(yValue(d)))
                 .attr('width', d => xScale(xValue(0)))
                 .attr('height', yScale.bandwidth()/1.5)
@@ -495,8 +496,8 @@
             
             d3.select(this).transition()
                   .duration('50')
-                  .style("opacity",1)
-                  .style("fill","grey")
+                  .style("opacity",.85)
+                  .style("fill","black")
                   .attr('height', yScale.bandwidth()/1.5);
             d3.select("svg")
                   .append("g")                  
@@ -553,7 +554,7 @@
 
       /*SVG2 - BarChart for Top 10 Lowest Countries Vandana */
       
-      const widthlow = 585;
+      const widthlow = 520;
       const heightlow = 200;
       //d3.select('svg1').remove();
       const svglow = d3
@@ -630,6 +631,7 @@
             
           g.selectAll('rect').data(data)
             .enter().append('rect')
+              .attr('class', 'barrect')
               .attr('y', d => yScale(yValue(d)))
               .attr('width', d => xScale(xValue(0)))
               .attr('height', yScale.bandwidth()/1.5)
@@ -748,7 +750,7 @@
 
       ///Bubble Chart Implementation////
 
-      const width_bubble = 500;
+      const width_bubble = 400;
       const height_bubble = 300;
 
       //d3.select('svg1').remove();
@@ -783,7 +785,7 @@
 
         // set the dimensions and margins of the graph
         var margin = {top: 40, right: 150, bottom: 60, left: 80},
-            width = 800 - margin.left - margin.right,
+            width = 750 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
