@@ -900,6 +900,24 @@
           tooltip
             .transition()
             .duration(200)
+          d3.select("svg")
+                  .append("g")                  
+                  .selectAll("path")
+                  .data(world.features)
+                  .enter()
+                  .append("path")
+                  .attr("d", path)                  
+                  .style("fill", function(f){
+                    if(f.properties.name === d["Country"]){
+                      console.log(topic);
+                      return "red";
+                    }else{
+                      return "grey";
+                    }                 
+                  })
+                  .style("stroke", "white")
+                  .style("opacity", 0.8)
+                  .style("stroke-width", 1);
           var tooltipText = 'Country: ' + d['Country'] + '<br>';
           tooltipText += topic + ': ' + d[topic] + '<br>';
           tooltipText += yAxisParam + ': ' + d[yAxisParam] + '<br>' + '<br>';

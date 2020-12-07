@@ -7,9 +7,9 @@ margin: 10px;
 }
 
 .hbar {
-  color :black;
+  color :white;
   padding-top: 0.1px;
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: bold;
   padding-left: 9px;
   background: #0088cc;
@@ -19,13 +19,56 @@ margin: 10px;
     padding-right: 10px;
     font-size: 13px;
     font-weight: bold;
-    color: black;
+    color: white;
     padding: 8px 10px;
     text-align: center;
     padding-right: 25px;
     align-items: center;
     width: auto;
     height: 15px;
+}
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tabbutton {
+  background-color: #aa42f5;
+  font-family: 'Alice';
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  /*padding-top: -50px;*/
+  /*padding-top: 10px;*/
+  padding-bottom: -5px;
+  padding-right: 14px;
+}
+
+/* Change background color of buttons on hover */
+.tabbutton:hover {
+  background-color: darkgray;
+  opacity: 0.6;
+}
+
+/* Create an active/current tablink class */
+.tabbutton.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
 
 .names {
