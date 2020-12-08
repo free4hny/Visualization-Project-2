@@ -12,7 +12,7 @@
   // Adding a Drop-down for the Y-axis to access Bubble Chart
   const fieldsMapping = {
     'Population': ['Area(sq km)'],
-    'GDP - per capita': ['Life expectancy at birth(years)'],
+    'GDP - per capita': ['Investment (gross fixed)(% of GDP)'],
     'Unemployment rate(%)': ['Labor force'],
     'Oil - consumption(bbl/day)' : ['Oil - production(bbl/day)'],
     'Electricity - production(kWh)': ['Electricity - consumption(kWh)']
