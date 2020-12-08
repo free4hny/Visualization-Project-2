@@ -142,7 +142,7 @@ label{
     top: -325px;
     left: 835px;
     background-color:white;
-}
+  }
 div.tooltip {	
   z-index: 9999;
   position: absolute;			
@@ -231,13 +231,6 @@ button:hover {
   left: 760px;
   text-align: right;
 }*/
-
-#piechart{
-  position: relative;
-  top: -325px;
-  left: 835px;
-
-}
 
 .vl {
   border-left: 6px solid #484646;
