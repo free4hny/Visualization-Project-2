@@ -1,0 +1,246 @@
+body {
+
+
+background-color:white;
+margin: 10px;
+
+}
+
+.hbar {
+  color :white;
+  padding-top: 0.1px;
+  font-size: 15.5px;
+  font-weight: bold;
+  padding-left: 9px;
+  background: #0088cc;
+}
+
+.hbar form {
+    padding-right: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    padding-right: 25px;
+    align-items: center;
+    width: auto;
+    height: 15px;
+}
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tabbutton {
+  background-color: #aa42f5;
+  font-family: 'Alice';
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  /*padding-top: -50px;*/
+  /*padding-top: 10px;*/
+  padding-bottom: -5px;
+  padding-right: 14px;
+}
+
+/* Change background color of buttons on hover */
+.tabbutton:hover {
+  background-color: darkgray;
+  opacity: 0.6;
+}
+
+/* Create an active/current tablink class */
+.tabbutton.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.names {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+/* Tooltip CSS */
+.d3-tip {
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "avenir next", Arial, sans-serif;
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffa500;
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+
+.details {
+  color: white;
+  pointer-events: none;
+}
+
+.top-container {
+  display: inline-flex;
+  justify-content: center;  
+  
+}
+
+.world-map {
+  position: relative;
+  /*border-right: black 1px solid;*/
+}
+
+.selectors {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+select {
+  width: 100px;
+  height: 24px;
+}
+
+/* Vandana CSS*/
+label{
+  font-size: 15px;
+}
+
+.barrect {
+  fill: black;
+  opacity: 0.85;
+}
+
+  rect {
+    fill:white;
+    background-color: #333333; 
+    
+  }
+  
+  #piechart{
+    position: relative;
+    top: -325px;
+    left: 835px;
+    background-color:white;
+  }
+
+div.tooltip {	
+  z-index: 9999;
+  position: absolute;			
+  text-align: center;			
+  width: 150;					
+  height: 46px;					
+  padding: 2px;				
+  font: 12px sans-serif;		
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffa500;	
+  border: 0px;		
+  border-radius: 8px;			
+  pointer-events: none;			
+}
+
+.ResetButton{  
+  padding: 3px 3px;
+  text-align: center;
+  text-decoration: none;    
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+}
+
+.ResetButton:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.IndexButton{ 
+  
+  padding: 5px 5px;
+  text-align: center;     
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #cddf30;
+  cursor: pointer;  
+  font-weight: bold;
+}
+.IndexButton:hover {
+  background-color: #cddf30;
+  color: white;
+}
+
+button{
+  padding: 5px 5px;
+  text-align: center;     
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  cursor: pointer;  
+  font-weight: bold;
+  
+}
+
+button:hover {
+  background-color: #4CAF50;
+  color:black;
+}
+
+
+/*#bubble-chart-container {
+    position: relative;
+    top: 10px;
+    left: 730px;
+    width: 0px;
+    height: 0px;
+    background: lightgray;
+}*/
+
+/*#mapping-selector{
+  position: relative;
+  top: 10px;
+  left: 760px;
+  text-align: right;
+}*/
+
+#piechart{
+  position: relative;
+  top: -325px;
+  left: 835px;
+
+}
+
+.vl {
+  border-left: 6px solid #484646;
+  height: 410px;
+}
