@@ -14,6 +14,7 @@
     'Population': ['Area(sq km)'],
     'GDP - per capita': ['Life expectancy at birth(years)'],
     'Unemployment rate(%)': ['Labor force'],
+    'Oil - consumption(bbl/day)' : ['Oil - production(bbl/day)'],
     'Electricity - production(kWh)': ['Electricity - consumption(kWh)']
   }
   const defaultTopics = [
@@ -932,7 +933,7 @@
                   .style("fill", function(f){
                     if(f.properties.name === d["Country"]){
                       console.log(topic);
-                      return "red";
+                      return "indigo";
                     }else{
                       return "grey";
                     }                 
@@ -972,12 +973,12 @@
           // reduce opacity of all groups
           d3.selectAll(".bubbles").style("opacity", 0.15)
           // expect the one that is hovered
-          d3.selectAll("."+getCountrySlug(d.Country)).style("opacity", 0.9).style('fill', '#ffa500');
+          d3.selectAll("."+getCountrySlug(d.Country)).style("opacity", 0.9).style('fill', 'indigo');
         }
 
         // And when it is not hovered anymore
         var noHighlight = function(d){
-          d3.selectAll(".bubbles").style("opacity", 0.3).style('fill', 'indigo');
+          d3.selectAll(".bubbles").style("opacity", 0.3).style('fill', '#e60e4f');
         }
 
           svg.selectAll('circle').data(data)
@@ -1010,10 +1011,10 @@
             } )
             .attr("cy", function (d) { return y(yValue(d)); } )
             .attr("r", function (d) { return z(xValue(d)); } )
-            .style("fill", "indigo")
+            .style("fill", "#e60e4f")
             .style("opacity", "0.7")
             .attr("stroke", "black")
-            .attr("stroke-width", "0.2")
+            .attr("stroke-width", "0.5")
             //.style("fill", function (d) { return myColor(d['Population']); } )
           // -3- Trigger the functions for hover
           .on("mouseover", showTooltip )
