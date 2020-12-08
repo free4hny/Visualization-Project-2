@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Metadata -->
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+    <!-- Title -->
+    <title>World Map</title>
+
+    <!-- CSS Styling -->
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+
+  <!-- Main page content -->
+  <body> 
+    <div class="hbar">
+
+     <h1> World Factbook - 2005
+        <!-- <form style="float:right">
+          <button type="submit" formaction="about.html">Design Document</button>
+          <button type="submit" formaction="demo.html"> Demonstration Video </button>
+        </form>
+      </h1> -->
+
+    <!-- <h1> World Factbook - 2005 -->
+      <!-- <form style="float:right">
+      <button type="submit" formaction=" ##### "> Document</button>
+      <button type="submit" formaction=" ######"> Demonstration Video </button>
+      </form> -->
+
+      <div style="float: right;">
+      <form>
+        <input class="tabbutton" type="button" value="About" onclick="window.location.href='about.html'" />
+
+        <input class="tabbutton" type="button" value="Video" onclick="window.location.href='demo.html'" /> 
+      </form>
+    </div>
+
+    </h1>
+
+    </div>   
+    <div class="top-container">      
+      <div class="world-map">
+        <div class="selectors" style="color: black">
+          <button onClick="window.location.reload()" class="ResetButton">Reset</button>
+          <label>Continents</label>
+          <select id="continent-selector" class="continent-selector"></select>
+          <label>Topics</label>
+          <select id="topic-selector" class="topic-selector"></select>          
+        </div>     
+      </div>
+      <div class="vl"></div>
+        <div class="barchartlow"> 
+          <div class="barcharthigh"> </div>
+        </div> 
+      </div>
+
+
+    <div class="bubblechart" style="background-color:white">
+          <div class="mappings-dropdown">
+              <label>Y Axis</label>
+              <select id="mapping-selector" class="mapping-selector"></select>
+        </div>
+      <div id="bubble-chart-container"></div>
+    </div>
+    
+    <!-- <h2>Showing top 7 countries under External debt</h2> -->
+    <!--<h3>Top 7 Countries and Total Debt as <b>"9988700000000 M" </b></h3> -->
+
+    <div id="piechart"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Load google charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+          ['Country', 'Value'],
+          ['United Kingdom', 4710 ],
+          ['United States', 1400],
+          ['Italy', 913.9],
+          ['Spain', 771.10],
+          ['Canada', 570],
+          //['Hong Kong', 417600000000],
+          //['Australia', 308700000000],
+          //['Portugal', 274700000000],
+          ['China', 233.3],
+          //['Brazil', 219800000000],
+          //['Russia', 169600000000],
+        ]);
+
+      // Optional; add a title and set the width and height of the chart
+      var options = {'title':'Debt by Countries'+ ' In Billions(M)', 'width':580, 'height':300};
+
+      // Display the chart inside the <div> element with id="piechart"
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      } 
+    </script> 
+   
+    
+    <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+    <script src="./js/visualization.js"></script>
+   <!-- <script src="js/int_bubblechart.js"></script> -->
+
+  </body>
+</html>
