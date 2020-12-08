@@ -39,7 +39,7 @@ margin: 10px;
 /* Style the buttons that are used to open the tab content */
 .tabbutton {
   background-color: #aa42f5;
-  font-family: 'Alice';
+  font-family: Arial;
   font-weight: bold;
   color: white;
   font-size: 16px;
@@ -74,6 +74,7 @@ margin: 10px;
 .names {
   fill: none;
   stroke: #fff;
+  font-family: Arial;
   stroke-linejoin: round;
 }
 
@@ -81,7 +82,7 @@ margin: 10px;
 .d3-tip {
   line-height: 1.5;
   font-weight: 400;
-  font-family: "avenir next", Arial, sans-serif;
+  font-family: Arial;
   padding: 6px;
   background: rgba(0, 0, 0, 0.6);
   color: #ffa500;
@@ -149,8 +150,9 @@ div.tooltip {
   text-align: center;			
   width: 150;					
   height: 46px;					
-  padding: 2px;				
-  font: 12px sans-serif;		
+  padding: 2px;
+  font-family: Arial;				
+  font: 12px;		
   background: rgba(0, 0, 0, 0.6);
   color: #ffa500;	
   border: 0px;		
@@ -171,6 +173,7 @@ div.tooltip {
   cursor: pointer;
   float: right;
   font-weight: bold;
+  font-family: Arial;
 }
 
 .ResetButton:hover {
@@ -183,6 +186,7 @@ div.tooltip {
   padding: 5px 5px;
   text-align: center;     
   font-size: 12px;
+  font-family: Arial;
   margin: 4px 2px;
   transition-duration: 0.4s;
   background-color: white;
@@ -198,7 +202,8 @@ div.tooltip {
 
 button{
   padding: 5px 5px;
-  text-align: center;     
+  text-align: center;
+  font-family: Arial;    
   font-size: 12px;
   margin: 4px 2px;
   transition-duration: 0.4s;

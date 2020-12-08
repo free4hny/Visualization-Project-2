@@ -282,8 +282,8 @@
                       parseFloat(d[topic]) <= ranges[1]
                     ) {
                       d3.select(this)
-                        .style("stroke", "white")
-                        .style("stroke-width", 2)
+                        .style("stroke", "#1a1a1a")
+                        .style("stroke-width", 1)
                         .style("opacity", 1);
                     }
                   }
@@ -293,8 +293,8 @@
                     parseFloat(d[topic]) <= ranges[1]
                   ) {
                     d3.select(this)
-                      .style("stroke", "white")
-                      .style("stroke-width", 2)
+                      .style("stroke", "#1a1a1a")
+                      .style("stroke-width", 1)
                       .style("opacity", 1);
                   }
                 }
@@ -504,7 +504,7 @@
                     }                 
                   })
                   .style("stroke", "white")
-                  .style("opacity", 0.85)
+                  .style("opacity", 1)
                   .style("stroke-width", 1);
                 div.transition()
                     .duration(50)
@@ -939,7 +939,7 @@
                     }                 
                   })
                   .style("stroke", "white")
-                  .style("opacity", 0.8)
+                  .style("opacity", 1)
                   .style("stroke-width", 1);
           var tooltipText = 'Country: ' + d['Country'] + '<br>';
           tooltipText += topic + ': ' + d[topic] + '<br>';
