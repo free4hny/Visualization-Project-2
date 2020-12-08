@@ -129,13 +129,19 @@ label{
 .barrect {
   fill: black;
   opacity: 0.85;
-  
 }
-rect {
-  fill:#333333;
-  background-color: #333333; 
+
+  rect {
+    fill:white;
+    background-color: #333333; 
+    
+  }
   
-}
+  #piechart{
+    position: relative;
+    top: -325px;
+    left: 835px;
+    background-color:white;
 
 div.tooltip {	
   z-index: 9999;
