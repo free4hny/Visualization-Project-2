@@ -50,6 +50,24 @@
         .range(d3.schemeYlGn[9]),
       densities: ["0%", "1%", "5%", "10%", "15%", "20%", "50%", ">50%"],
     },
+    
+    {
+      topic: "Oil - consumption(bbl/day)",
+      colorFn: d3
+        .scaleThreshold()
+        .domain([
+          0,
+          20,
+          10000,
+          50000,
+          500000,
+          1183000,
+          19650000,
+        ])
+        .range(d3.schemePuRd[8]),
+      densities: ["0", "20", "10000", "50000", "500000", "1183000", "19650000"],
+    },
+
     {
       topic: "Electricity - production(kWh)",
       colorFn: d3
@@ -66,6 +84,8 @@
         .range(d3.schemeOranges[8]),
       densities: ["0", "0.1B", "10B", "50B", "100B", "1000B", ">1000B"],
     },
+
+   
   ];
 
 
@@ -326,6 +346,8 @@
               d["Unemployment rate(%)"] = countryInfo["Unemployment rate(%)"];
               d["Electricity - production(kWh)"] =
                 countryInfo["Electricity - production(kWh)"];
+              d["Oil - consumption(bbl/day)"] =
+                countryInfo["Oil - consumption(bbl/day)"];
             }
             return countryInfo ? topicColor(countryInfo[topic]) : "grey";
           })
