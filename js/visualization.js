@@ -803,7 +803,7 @@
         console.log(continent);
         console.log(topic);
 
-        const titleText = 'Bubble Chart across Countries - ' + topic;//GDP - per capita';
+        const titleText = 'Bubble Chart across all the Countries by ' + topic;//GDP - per capita';
         const xAxisLabelText = topic;
 
         // set the dimensions and margins of the graph
@@ -891,7 +891,8 @@
             .attr("x", width / 2)
             .attr("y", height + 40)
             .text(topic)
-            .style("font", "14px times");
+            .style("font", "14px times")
+            .style("font-family", "Arial");
 
         // Add Y axis
         var y = d3.scaleLinear()
@@ -908,12 +909,13 @@
           .attr("y", 0 - 50)
           .text(yAxisParam)
           .style("font", "14px times")
+          .style("font-family", "Arial")
           .attr("text-anchor", "middle");
 
         // Add a scale for bubble size
         var z = d3.scaleSqrt()
           .domain(xDomain)
-          .range([ 2, 30]);
+          .range([ 2, 31]);
 
 
 
@@ -993,10 +995,11 @@
                .attr("r", function(d) { return z(z(d)); });
 
           svg.append('text')
-              .attr("text-anchor", "start")
+              .attr("text-anchor", "right")
               .attr('class', 'title')
               .attr('y', -20)
-              .text(titleText);
+              .text(titleText)
+              .style("font-family", "Arial");
 
 
         // Add the Bubbles to the chart
