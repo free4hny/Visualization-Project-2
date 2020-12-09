@@ -486,7 +486,7 @@
             d3.select(this).transition()
                   .duration('50')
                   .style("opacity", ".85")
-                  .style("fill","red")
+                  .style("fill","#a1d76a")
                   .attr('height', yScale.bandwidth());
             d3.select("svg")
                   .append("g")                  
@@ -520,7 +520,7 @@
             d3.select(this).transition()
                   .duration('50')
                   .style("opacity",.85)
-                  .style("fill","black")
+                  .style("fill","#fec44f")
                   .attr('height', yScale.bandwidth()/1.5);
             d3.select("svg")
                   .append("g")                  
@@ -681,7 +681,7 @@
             d3.select(this).transition()
                   .duration('50')
                   .style("opacity", ".8")                  
-                  .style("fill", "Red")
+                  .style("fill", "#a1d76a")
                   .attr('height', yScale.bandwidth());
             d3.select("svg")
                   .append("g")                  
@@ -714,7 +714,7 @@
             d3.select(this).transition()
                   .duration('50')
                   .style("opacity", 0.9)
-                  .style("fill","black")
+                  .style("fill","#fec44f")
                   .attr('height', yScale.bandwidth()/1.5);
             d3.select("svg")
                   .append("g")                  
