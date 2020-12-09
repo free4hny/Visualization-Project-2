@@ -381,7 +381,7 @@
       }
 
       //*********SVG1 - BarChart for Top 10 Highest Countries - Vandana**********
-      const widthhigh = 520;
+      const widthhigh = 550;
       const heighthigh = 200;
       //d3.select('svg1').remove();
       const svghigh = d3
@@ -410,7 +410,7 @@
           const yValue = d => d.Country;
           //const xValue = d => d.Country;//'GDP - per capita'];
           //const yValue = d => d[topic];
-          const marginhigh = { top: 50, right: 40, bottom: 50, left: 100 };
+          const marginhigh = { top: 50, right: 30, bottom: 50, left: 130 };
           const innerWidthhigh = widthhigh - marginhigh.left - marginhigh.right;
           const innerHeighthigh = heighthigh - marginhigh.top - marginhigh.bottom;
           
@@ -577,7 +577,7 @@
 
       /*SVG2 - BarChart for Top 10 Lowest Countries Vandana */
       
-      const widthlow = 520;
+      const widthlow = 550;
       const heightlow = 200;
       //d3.select('svg1').remove();
       const svglow = d3
@@ -606,7 +606,7 @@
           const yValue = d => d.Country;
           //const xValue = d => d.Country;//'GDP - per capita'];
           //const yValue = d => d[topic];
-          const marginlow = { top: 50, right: 40, bottom: 50, left: 100 };
+          const marginlow = { top: 50, right: 30, bottom: 50, left: 130 };
           const innerWidthlow = widthlow - marginlow.left - marginlow.right;
           const innerHeightlow = heightlow - marginlow.top - marginlow.bottom;
           
