@@ -114,7 +114,7 @@
   let topicDensity = defaultTopics.find((t) => t.topic === topic).densities;
   const densityLineWidth = 500;
   const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-  const width = 800 - margin.left - margin.right;
+  const width = 750 - margin.left - margin.right;
   const height = 405 - margin.top - margin.bottom;
 
   const svg = d3
@@ -150,7 +150,7 @@
   const projection = d3
     .geoMercator()
     .scale(80)
-    .translate([width / 2.2, height / 1.5]);
+    .translate([width / 2.5, height / 1.5]);
 
   const path = d3.geoPath().projection(projection);
   let countriesIncContinent = {};
@@ -381,7 +381,7 @@
       }
 
       //*********SVG1 - BarChart for Top 10 Highest Countries - Vandana**********
-      const widthhigh = 550;
+      const widthhigh = 520;
       const heighthigh = 200;
       //d3.select('svg1').remove();
       const svghigh = d3
@@ -410,7 +410,7 @@
           const yValue = d => d.Country;
           //const xValue = d => d.Country;//'GDP - per capita'];
           //const yValue = d => d[topic];
-          const marginhigh = { top: 50, right: 30, bottom: 50, left: 130 };
+          const marginhigh = { top: 50, right: 30, bottom: 50, left: 100 };
           const innerWidthhigh = widthhigh - marginhigh.left - marginhigh.right;
           const innerHeighthigh = heighthigh - marginhigh.top - marginhigh.bottom;
           
@@ -577,7 +577,7 @@
 
       /*SVG2 - BarChart for Top 10 Lowest Countries Vandana */
       
-      const widthlow = 550;
+      const widthlow = 520;
       const heightlow = 200;
       //d3.select('svg1').remove();
       const svglow = d3
@@ -606,7 +606,7 @@
           const yValue = d => d.Country;
           //const xValue = d => d.Country;//'GDP - per capita'];
           //const yValue = d => d[topic];
-          const marginlow = { top: 50, right: 30, bottom: 50, left: 130 };
+          const marginlow = { top: 50, right: 30, bottom: 50, left: 100 };
           const innerWidthlow = widthlow - marginlow.left - marginlow.right;
           const innerHeightlow = heightlow - marginlow.top - marginlow.bottom;
           
@@ -807,7 +807,7 @@
         const xAxisLabelText = topic;
 
         // set the dimensions and margins of the graph
-        var margin = {top: 40, right: 150, bottom: 60, left: 80},
+        var margin = {top: 40, right: 150, bottom: 60, left: 100},
             width = 750 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
