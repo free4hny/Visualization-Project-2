@@ -414,7 +414,7 @@
           const innerWidthhigh = widthhigh - marginhigh.left - marginhigh.right;
           const innerHeighthigh = heighthigh - marginhigh.top - marginhigh.bottom;
           
-          maxValuehigh = Math.max(...data.map((f) => f[topic]));
+          maxValuehigh = Math.max(...data.filter((f) => f[topic] !== "Unknown").map((f) => f[topic]));
           //console.log(maxValuehigh);
           const xScale = d3.scaleLinear()
             //.domain([0, 60000])
@@ -610,7 +610,7 @@
           const innerWidthlow = widthlow - marginlow.left - marginlow.right;
           const innerHeightlow = heightlow - marginlow.top - marginlow.bottom;
           
-          maxValuelow = Math.max(...data.map((f) => f[topic]));
+          maxValuelow = Math.max(...data.filter((f) => f[topic] !== "Unknown").map((f) => f[topic]));
           //console.log(maxValuelow);
           const xScale = d3.scaleLinear()
             //.domain([0, 60000])
